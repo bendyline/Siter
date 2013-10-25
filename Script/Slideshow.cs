@@ -21,7 +21,7 @@ namespace BL.Site
         protected Section presenter;
 
         private int activeIndex = 0;
-        private ContentSectionSet sections;
+        private ContentItemSet sections;
 
         public int ActiveIndex
         {
@@ -39,7 +39,7 @@ namespace BL.Site
         }
 
         [ScriptName("o_sections")]
-        public ContentSectionSet Sections
+        public ContentItemSet Sections
         {
             get
             {
@@ -63,6 +63,16 @@ namespace BL.Site
             {
                 this.nextElement.AddEventListener("click", this.HandleNextButton, true);
             }
+
+            if (this.previousElement!= null)
+            {
+                this.previousElement.AddEventListener("click", this.HandlePreviousButton, true);
+            }
+        }
+
+        private void HandlePreviousButton(ElementEvent e)
+        {
+            this.Previous();
         }
 
         private void HandleNextButton(ElementEvent e)
@@ -72,7 +82,7 @@ namespace BL.Site
 
         public void Next()
         {
-            if (this.activeIndex >= this.sections.Sections.Count)
+            if (this.activeIndex >= this.sections.Items.Count - 1)
             {
                 this.ActiveIndex = 0;
             }
@@ -82,16 +92,11 @@ namespace BL.Site
             }
         }
 
-        private void HandlePreviousButton(ElementEvent e)
-        {
-            this.Previous();
-        }
-
         public void Previous()
         {
             if (this.activeIndex <= 0)
             {
-                this.ActiveIndex = this.Sections.Sections.Count -1;
+                this.ActiveIndex = this.Sections.Items.Count -1;
             }
             else
             {
@@ -103,11 +108,11 @@ namespace BL.Site
         {
             base.OnUpdate();
 
-            if (this.Sections != null && this.presenter != null)
+            if (this.Sections != null && this.presenter != null && this.Sections.Items != null)
             {
-                if (this.activeIndex >= 0 && this.activeIndex <= this.Sections.Sections.Count)
+                if (this.activeIndex >= 0 && this.activeIndex < this.Sections.Items.Count)
                 {
-                    this.presenter.ContentSection = this.Sections.Sections[this.activeIndex];
+                    this.presenter.ContentSection = this.Sections.Items[this.activeIndex];
                 }
             }
         }

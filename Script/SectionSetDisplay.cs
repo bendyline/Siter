@@ -13,7 +13,7 @@ namespace BL.Site
 {
     public class SectionSetDisplay : ItemsControl
     {
-        private ContentSectionSet sectionSet;
+        private ContentItemSet sectionSet;
         private String sectionDataUrl = null;
         private bool retrieved;
 
@@ -34,7 +34,7 @@ namespace BL.Site
             }
         }
 
-        public ContentSectionSet ContentSectionSet
+        public ContentItemSet ContentSectionSet
         {
             get
             {
@@ -69,7 +69,7 @@ namespace BL.Site
                     }
                 }
 
-                foreach (ContentSection cs in this.ContentSectionSet.Sections)
+                foreach (ContentItem cs in this.ContentSectionSet.Items)
                 {
                     Section s = existingSections[cs.Id];
 
@@ -93,7 +93,7 @@ namespace BL.Site
 
         public void SectionSetRetrieved(object css)
         {
-            ContentSectionSet[] contentSectionSets = (ContentSectionSet[])css;
+            ContentItemSet[] contentSectionSets = (ContentItemSet[])css;
 
             this.ContentSectionSet = contentSectionSets[0];
         }

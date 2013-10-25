@@ -9,7 +9,7 @@ namespace BL.Site
 {
     public class Section : Control
     {
-        private ContentSection section;
+        private ContentItem section;
         
         [ScriptName("e_title")]
         protected Element titleElement;
@@ -31,7 +31,7 @@ namespace BL.Site
             }
         }
 
-        public ContentSection ContentSection
+        public ContentItem ContentSection
         {
             get
             {
@@ -46,6 +46,8 @@ namespace BL.Site
                 {
                     this.TemplateId = this.section.TemplateId;
                 }
+
+                this.Update();
             }
         }
 
@@ -84,7 +86,7 @@ namespace BL.Site
 
             if (this.slideshow != null)
             {
-                this.slideshow.Sections = (ContentSectionSet)this.ContentSection.ComponentData;
+                this.slideshow.Sections = (ContentItemSet)this.ContentSection.Data;
             }
         }
 
