@@ -10,12 +10,16 @@ namespace BL.Site
     public class Section : Control
     {
         private ContentItem section;
-        
+        private String url;
+
         [ScriptName("e_title")]
         protected Element titleElement;
 
         [ScriptName("e_content")]
         protected Element contentElement;
+
+        [ScriptName("e_titleLink")]
+        protected AnchorElement titleLinkElement;
 
         [ScriptName("e_mainImage")]
         protected ImageElement mainImage;
@@ -23,6 +27,19 @@ namespace BL.Site
         [ScriptName("c_slideshow")]
         protected Slideshow slideshow;
 
+        [ScriptName("s_url")]
+        public String Url
+        {
+            get
+            {
+                return this.url;
+            }
+
+            set
+            {
+                this.url = value;
+            }
+        }
         public override string DefaultClass
         {
             get
@@ -69,6 +86,18 @@ namespace BL.Site
             if (contentElement != null)
             {
                 contentElement.InnerText = this.section.Content;
+            }
+
+            if (titleLinkElement != null)
+            {
+                if (this.url != null)
+                {
+                    titleLinkElement.Href = this.url;
+                }
+                else if (this.section.Url != null)
+                {
+                    titleLinkElement.Href = this.section.Url;
+                }
             }
 
             if (mainImage != null)

@@ -1,6 +1,3 @@
-// Slideshow.cs
-//
-
 using System;
 using System.Collections.Generic;
 using BL.UI;
@@ -55,7 +52,7 @@ namespace BL.Site
             }
         }
 
-        public override void OnApplyTemplate()
+        protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 

@@ -1,4 +1,4 @@
-// Class1.cs
+// Section Set Display.cs
 //
 
 using System;
@@ -65,7 +65,6 @@ namespace BL.Site
                     foreach (Section section in this.ItemControls)
                     {
                         existingSections[section.ContentSection.Id] = section;
-
                     }
                 }
 
@@ -97,7 +96,5 @@ namespace BL.Site
 
             this.ContentSectionSet = contentSectionSets[0];
         }
-
-
     }
 }
