@@ -80,12 +80,12 @@ namespace BL.Site
 
             if (titleElement != null)
             {
-                ControlUtilities.SetText(titleElement, this.section.Title);
+                ElementUtilities.SetText(titleElement, this.section.Title);
             }
 
             if (contentElement != null)
             {
-                ControlUtilities.SetText(contentElement, this.section.Content);
+                ElementUtilities.SetText(contentElement, this.section.Content);
             }
 
             if (titleLinkElement != null)
