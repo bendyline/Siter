@@ -17,6 +17,19 @@ namespace BL.Site
         private bool displayScrollbar = true;
         private bool transparent = false;
 
+        [ScriptName("b_transparent")]
+        public bool Transparent
+        {
+            get
+            {
+                return this.transparent;
+            }
+
+            set
+            {
+                this.transparent = value;
+            }
+        }
 
         [ScriptName("b_displayScrollbar")]
         public bool DisplayScrollbar
@@ -110,6 +123,12 @@ namespace BL.Site
         {
             base.OnInit();
 
+            InjectTwitterScript();
+        }
+
+        public static void InjectTwitterScript()
+        {
+
             // script based on the twitter embed script
             //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
             //if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
@@ -166,6 +185,11 @@ namespace BL.Site
             if (!this.displayScrollbar)
             {
                 options += " noscrollbar";
+            }
+
+            if (this.transparent)
+            {
+                options += " transparent";
             }
 
             if (options.Length > 0)
